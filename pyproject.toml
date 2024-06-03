@@ -8,6 +8,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+selenium = "^4.21.0"
+pytest = "^8.2.1"
+chromedrivermanager = "^0.0.1"
+webdriver-manager = "^4.0.1"
+faker = "^25.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
