@@ -11,6 +11,7 @@ def driver():
     service = Service(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
     yield driver
+    driver.quit()
 
 
 # В этом примере мы создаем экземпляр `webdriver.ChromeOptions` и передаем его в конструктор `webdriver.Chrome`.
