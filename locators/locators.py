@@ -15,3 +15,11 @@ class TextboxLocators:
     CREATED_PERMANENT_ADDRESS = (By.CSS_SELECTOR, "#output #permanentAddress")
 
 
+class CheckboxPageLocators:
+    EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
+    ITEM_CHECKBOX_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
+    CHECKED_CHECKBOXES = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
+    TITLE_ITEM = (By.XPATH, ".//ancestor::span[@class='rct-text']")
+    OUTPUT_CHOSEN_CHECKBOXES = (By.CSS_SELECTOR, "span[class='text-success']")
+
+

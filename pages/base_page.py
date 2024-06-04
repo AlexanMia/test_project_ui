@@ -23,6 +23,17 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
+    def elements_are_visible(self, locator, timeout=5) -> list:
+        """
+        Waits for the elements to be visible on the page for the specified time
+        and returns list of the elements object if they become visible.
+
+        :param locator: Element Locator
+        :param timeout: Waiting time in seconds
+        :return: list of WebElements
+        """
+        return WebDriverWait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
+
     def element_is_present(self, locator, timeout=5) -> WebElement:
         """
         Waits for the element to be located in the DOM for the specified time
@@ -34,6 +45,18 @@ class BasePage:
         :return: WebElement
         """
         return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
+
+    def elements_are_present(self, locator, timeout=5) -> list:
+        """
+        Waits for the element to be located in the DOM for the specified time
+        and returns the element object if it is located in the DOM.
+        Does not necessarily mean that the element is visible.
+
+        :param locator: Element Locator
+        :param timeout: Waiting time in seconds
+        :return: list of WebElements
+        """
+        return WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located(locator))
 
     def element_is_not_visible(self, locator, timeout=5) -> WebElement:
         """
@@ -66,7 +89,7 @@ class BasePage:
 
         :param element: WebElement
         """
-        self.driver.execute_script("argument[0].scrollIntoView();", element)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     @staticmethod
     def extract_text_from_element(element) -> str:
@@ -78,4 +101,3 @@ class BasePage:
         :return: string
         """
         return element.text
-
