@@ -4,7 +4,6 @@ from pages.textbox_page import TextboxPage
 
 
 class TestTextboxes:
-
     URL_DEMOQA = "https://demoqa.com"
 
     def test_fill_in_textboxes(self, driver):
@@ -18,22 +17,18 @@ class TestTextboxes:
         textbox_page = TextboxPage(driver, f'{self.URL_DEMOQA}{ENDPOINTS.TEXTBOX.value}')
         textbox_page.open()
 
-        (full_name,
-         email,
-         current_address,
-         permanent_address) = textbox_page.fill_all_fields_in_textboxes()
+        person = textbox_page.fill_all_fields_in_textboxes()
 
-        (output_full_name,
-         output_email,
-         output_cur_address,
-         output_perm_address) = textbox_page.get_filled_text_from_textboxes()
+        person_output = textbox_page.get_filled_text_from_textboxes()
 
-        assert full_name == output_full_name, ErrorMessages.EXPECTED_TEXT.value.format(full_name, output_full_name)
+        assert person.full_name == person_output.full_name, ErrorMessages.EXPECTED_TEXT.value.format(
+            person.full_name, person_output.full_name)
 
-        assert email == output_email, ErrorMessages.EXPECTED_TEXT.value.format(email, output_email)
+        assert person.email == person_output.email, ErrorMessages.EXPECTED_TEXT.value.format(
+            person.email, person_output.email)
 
-        assert current_address == output_cur_address, ErrorMessages.EXPECTED_TEXT.value.format(current_address,
-                                                                                               output_cur_address)
+        assert person.current_address == person_output.current_address, ErrorMessages.EXPECTED_TEXT.value.format(
+            person.current_address, person_output.current_address)
 
-        assert permanent_address == output_perm_address, ErrorMessages.EXPECTED_TEXT.value.format(permanent_address,
-                                                                                                  output_perm_address)
+        assert person.permanent_address == person_output.permanent_address, ErrorMessages.EXPECTED_TEXT.value.format(
+            person.permanent_address, person_output.permanent_address)
