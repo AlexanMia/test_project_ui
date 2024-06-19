@@ -1,5 +1,5 @@
 # Testing project UI
-## resourse https://demoqa.com 
+## source https://demoqa.com 
 
 ***Содержание:***
 1. тест на заполнение полей ввода с последующей проверкой введенных данных
