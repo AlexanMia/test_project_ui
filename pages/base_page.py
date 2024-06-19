@@ -5,6 +5,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
+    timeout = 5
+
     def __init__(self, driver: webdriver, url: str):
         self.driver = driver
         self.url = url
@@ -12,7 +14,7 @@ class BasePage:
     def open(self):
         self.driver.get(self.url)
 
-    def wait_element_is_visible(self, locator, timeout=5) -> WebElement:
+    def wait_element_is_visible(self, locator: tuple[str, str], timeout: int = timeout) -> WebElement:
         """
         Waits for the element to be visible on the page for the specified time
         and returns the element object if it becomes visible.
@@ -23,7 +25,7 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
-    def wait_elements_are_visible(self, locator, timeout=5) -> list:
+    def wait_elements_are_visible(self, locator: tuple[str, str], timeout: int = timeout) -> list:
         """
         Waits for the elements to be visible on the page for the specified time
         and returns list of the elements object if they become visible.
@@ -34,7 +36,7 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
 
-    def wait_element_is_present(self, locator, timeout=5) -> WebElement:
+    def wait_element_is_present(self, locator: tuple[str, str], timeout: int = timeout) -> WebElement:
         """
         Waits for the element to be located in the DOM for the specified time
         and returns the element object if it is located in the DOM.
@@ -46,7 +48,7 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
-    def wait_elements_are_present(self, locator, timeout=5) -> list:
+    def wait_elements_are_present(self, locator: tuple[str, str], timeout: int = timeout) -> list:
         """
         Waits for the element to be located in the DOM for the specified time
         and returns the element object if it is located in the DOM.
@@ -58,9 +60,9 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located(locator))
 
-    def wait_element_is_not_visible(self, locator, timeout=5) -> bool | WebElement:
+    def wait_element_is_not_visible(self, locator: tuple[str, str], timeout: int = timeout) -> bool | WebElement:
         """
-        The `element_is_not_visible` method is used to wait for the specified element (`WebElement')
+        The `element_is_not_visible` method is used to wait for the specified element ('WebElement')
         to become invisible on a web page.
 
         :param locator: Element Locator
@@ -69,7 +71,7 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.invisibility_of_element_located(locator))
 
-    def wait_element_is_clickable(self, locator, timeout=5) -> WebElement:
+    def wait_element_is_clickable(self, locator: tuple[str, str], timeout: int = timeout) -> WebElement:
         """
         Waits for the element to be visible on the page and clickable for the specified time
         and returns the element object.
@@ -80,7 +82,7 @@ class BasePage:
         """
         return WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
-    def scroll_to_element(self, element):
+    def scroll_to_element(self, element: WebElement):
         """
         The method uses the execution of a JavaScript script by the web driver (`self.driver`)
         to scroll the page to the specified element.

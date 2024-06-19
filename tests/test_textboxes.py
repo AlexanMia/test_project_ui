@@ -1,20 +1,21 @@
-from enums.enum_endpoints import ENDPOINTS
+import pytest
+
+from enums.enum_endpoints import ENDPOINTS, URL
 from enums.error_messages_enum import ErrorMessages
 from pages.textbox_page import TextboxPage
 
 
 class TestTextboxes:
-    URL_DEMOQA = "https://demoqa.com"
 
+    @pytest.mark.parametrize("driver", ["chrome"], indirect=True)
     def test_fill_in_textboxes(self, driver):
         """
-        This test fills texboxes with generated person info
+        This test fills textboxes with generated person info
         and checks text in textbox is matched with generated one
 
         :param driver: webdriver
         """
-
-        textbox_page = TextboxPage(driver, f'{self.URL_DEMOQA}{ENDPOINTS.TEXTBOX.value}')
+        textbox_page = TextboxPage(driver, f'{URL.DEMOQA.value}{ENDPOINTS.TEXTBOX.value}')
         textbox_page.open()
 
         person = textbox_page.fill_all_fields_in_textboxes()

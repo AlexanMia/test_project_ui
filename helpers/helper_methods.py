@@ -1,7 +1,7 @@
 
 class HelperMethods:
     @staticmethod
-    def split_string(text, separator) -> list:
+    def split_string(text: str, separator: str) -> list:
         """
         This method split sting according to the specified separator
 

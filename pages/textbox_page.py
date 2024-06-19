@@ -37,7 +37,6 @@ class TextboxPage(BasePage):
 
         :return: Person Object
         """
-
         full_name = self.helper.split_string(
             self.wait_element_is_present(self.locators.CREATED_FULL_NAME).text, ":")[1]
 
